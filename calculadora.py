@@ -13,7 +13,7 @@ def divisao(a,b):
 
 
 a = int(input("Digite um numero inteiro: "))
-op = input("Digite a operacao deseja com outro numero(+, -, * ou /): ").lower()
+op = input("Digite a operacao deseja com outro numero(+, -, * ou /): ")
 b = int(input("Digite outro o numero inteiro: "))
 
 
