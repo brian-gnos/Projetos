@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adivinhe o Número</title>
+        <style>
+            body {
+                color: white;
+                background-color: #000b3d;
+                font-family: 'Playfair Display', serif;
+                font-size: 23px;
+                text-align: center;
+                margin-top: 80px;
+            }
+
+            #tela-vitoria {
+                display: none;
+            }
+
+            input {
+                padding: 8px;
+                font-size: 16px;
+                background-color: #333;
+                color: white;
+                border: 1px solid #555;
+            }
+
+            button {
+                background-color: #6c63ff;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                padding: 10px 24px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #574fd6;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="tela-jogo">
+            <h1>Adivinhe o número!</h1>
+            <p>Estou pensando em um número de 1 a 50.</p>
+            <input type="number" id="chute" placeholder="Digite seu chute">
+            <button onclick="verificar()">Tentar</button>
+            <p id="mensagem"></p>
+        </div>
+
+        <div id="tela-vitoria">
+            <h1>🎉 Você acertou!</h1>
+            <p id="mensagem-vitoria"></p>
+            <button onclick="reiniciar()">Jogar de novo</button>
+        </div>
+
+        <script>
+            var numeroSecreto = Math.floor(Math.random() * 50) + 1;
+            var tentativas = 0;
+
+            function verificar() {
+                var chute = Number(document.getElementById("chute").value);
+                tentativas = tentativas + 1;
+
+                if (chute < numeroSecreto) {
+                    document.getElementById("mensagem").innerHTML = "Muito baixo! Tente mais alto.";
+                } else if (chute > numeroSecreto) {
+                    document.getElementById("mensagem").innerHTML = "Muito alto! Tente mais baixo.";
+                } else {
+                    document.getElementById("tela-jogo").style.display = "none";
+                    document.getElementById("tela-vitoria").style.display = "block";
+                    document.getElementById("mensagem-vitoria").innerHTML = "Você precisou de " + tentativas + " tentativas!";
+                }
+            }
+
+            function reiniciar() {
+                numeroSecreto = Math.floor(Math.random() * 50) + 1;
+                tentativas = 0;
+                document.getElementById("chute").value = "";
+                document.getElementById("mensagem").innerHTML = "";
+                document.getElementById("tela-jogo").style.display = "block";
+                document.getElementById("tela-vitoria").style.display = "none";
+            }
+        </script>
+
+    </body>
+</html>
