@@ -14,10 +14,10 @@ dictionary = {
 print("Pedra, papel ou tesoura! O primeiro a fazer 3 pontos ganha!")
 
 while True:
-    #a escolha do usuário
+    #escolha do usuário
     user = input("\nEscolha entre r(pedra), p(papel) ou s(tesoura): ").lower()
 
-    #a escolha do computador
+    #escolha do computador
     number_comp = random.randint(0,2)
     comp = options_comp[number_comp]
     
